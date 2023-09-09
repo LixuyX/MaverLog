@@ -1,0 +1,258 @@
+
+log1 = {}
+log2 = {}
+log3 = {}
+log4 = {}
+log5 = {}
+log6 = {}
+log7 = {}
+log8 = {}
+log9 = {}
+
+if log1 or log2 or log3 or log4 or log5 or log6 or log7 or log8 or log9 then
+	local version = "BackHome";
+	local logname = string.format("%d-%s-log.lua", game.PlaceId, os.date("%d_%m_%y"));
+	writefile(logname, string.format("Logs %s\n\n", os.date("%d/%m/%y"))) 
+end;
+
+local ostimec1 = os.time()
+local main = {
+	["1"] = rconsoleprint,
+	["2"] = hookfunc,
+	["3"] = hookfunction,
+	["4"] = replaceclosure,
+	["5"] = setreadonly,
+	["6"] = make_writeable,
+	["7"] = print,
+	["8"] = warn,
+	["9"] = writefile,
+	["10"] = appendfile,
+	["11"] = setclipboard,
+}
+if getgenv().AntihookFF1 == nil then
+	getgenv().AntihookFF1 = {
+		["print"] = false, -- ปรับเป็น true =ไห้ไช้ได้
+		["hook"] = false
+	}
+end
+local azx 
+azx = hookfunc(rconsoleprint, function (...)
+	if getgenv().AntihookFF1["print"] == true then
+		return azx(...)
+	else
+		return 
+	end
+end)
+local al 
+al = hookfunc(hookfunction, function (...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return al(...)
+	else
+		return 
+	end
+
+end)
+local al 
+al = hookfunc(setclipboard, function (...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return al(...)
+	else
+		return 
+	end
+end)
+local an 
+an = hookfunc(replaceclosure, function (...)
+	if getgenv().AntihookFF1["print"] == true then
+		return an(...)
+	else
+		return 
+	end
+
+end)
+local ay 
+ay = hookfunc(setreadonly, function (...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return ay(...)
+	else
+		return 
+	end
+
+end)
+local ae 
+ae = hookfunc(make_writeable, function (...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return ae(...)
+	else
+		return 
+	end
+end)
+local av 
+av = hookfunc(print, function (...)
+	if getgenv().AntihookFF1["print"] == true then
+		return av(...)
+	else
+		return 
+	end
+end)
+local at 
+at = hookfunc(warn, function (...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return at(...)
+	else
+		return 
+	end
+end)
+local aw 
+aw = hookfunc(writefile, function (...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return aw(...)
+	else
+		return 
+	end
+end)
+local aq
+aq = hookfunc(appendfile, function (...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return aq(...)
+	else
+		return 
+	end
+end)
+local dsa
+dsa = hookfunc(clonefunction,function(...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return dsa(...)
+	else
+		return 
+	end
+end)
+local as 
+as = hookfunc(hookfunc, function (...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return as(...)
+	else
+		return 
+	end
+end)
+
+getgenv().rconsoleprint = function(...)
+	if getgenv().AntihookFF1["print"] == true then
+		return main["1"](...)
+	else
+		return ""
+	end
+end
+getgenv().hookfunc = function(...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return main["2"](...)
+	else
+		return ""
+	end
+end
+getgenv().hookfunction = function(...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return main["3"](...)
+	else
+		return ""
+	end
+end
+getgenv().replaceclosure = function(...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return main["4"](...)
+	else
+		return ""
+	end
+end
+getgenv().setreadonly = function(...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return main["5"](...)
+	else
+		return ""
+	end
+end
+getgenv().make_writeable = function(...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return main["6"](...)
+	else
+		return ""
+	end
+end
+getgenv().print = function(...)
+	if getgenv().AntihookFF1["print"] == true then
+		return main["7"](...)
+	else
+		return ""
+	end
+end
+getgenv().warn = function(...)
+	if getgenv().AntihookFF1["print"] == true then
+		return main["8"](...)
+	else
+		return ""
+	end
+end
+getgenv().writefile = function(...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return main["9"](...)
+	else
+		return ""
+	end
+end
+getgenv().appendfile = function(...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return main["10"](...)
+	else
+		return ""
+	end
+end
+getgenv().setclipboard = function(...)
+	if getgenv().AntihookFF1["hook"] == true then
+		return main["11"](...)
+	else
+		return ""
+	end
+end
+local EnemySpawns = Instance.new("Folder",workspace)
+EnemySpawns.Name = "EnemySpawns"
+
+for i, v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
+	if v:IsA("Part") then
+		local EnemySpawnsX2 = v:Clone();
+		local result = string.gsub(v.Name, "Lv. ", "");
+		local result2 = string.gsub(result, "[%[%]]", "");
+		local result3 = string.gsub(result2, "%d+", "");
+		local result4 = string.gsub(result3, "%s+", "");
+		EnemySpawnsX2.Name = result4;
+		EnemySpawnsX2.Parent = workspace.EnemySpawns;
+		EnemySpawnsX2.Anchored = true;
+	end;
+end;
+for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+	if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
+		print(v.HumanoidRootPart.Parent);
+		local EnemySpawnsX2 = v.HumanoidRootPart:Clone();
+		local result = string.gsub(v.Name, "Lv. ", "");
+		local result2 = string.gsub(result, "[%[%]]", "");
+		local result3 = string.gsub(result2, "%d+", "");
+		local result4 = string.gsub(result3, "%s+", "");
+		print(result4);
+		EnemySpawnsX2.Name = result4;
+		EnemySpawnsX2.Parent = workspace.EnemySpawns;
+		EnemySpawnsX2.Anchored = true;
+	end
+end
+for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
+	if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
+		local EnemySpawnsX2 = v.HumanoidRootPart:Clone();
+		local result = string.gsub(v.Name, "Lv. ", "");
+		local result2 = string.gsub(result, "[%[%]]", "");
+		local result3 = string.gsub(result2, "%d+", "");
+		local result4 = string.gsub(result3, "%s+", "");
+		print(result4);
+		EnemySpawnsX2.Name = result4;
+		EnemySpawnsX2.Parent = workspace.EnemySpawns;
+		EnemySpawnsX2.Anchored = true;
+	end;
+end;
+
+
